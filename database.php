@@ -1,4 +1,8 @@
 <?php
 
-$connection = new PDO('mysql:localhost;dbname=crud', "root", "");
+$username = 'root';
+$password = '';
+$connection = new PDO( 'mysql:host=localhost;dbname=crud', $username, $password );
+
 ?>
+   
