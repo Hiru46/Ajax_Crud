@@ -27,5 +27,6 @@
             <input type="text" name="address" id="address"> <br><br>
         <button type="button" onclick="submitData('insert');">Register</button>
     </form>
+    <a href="index.php"> Index</a>
 </body>
 </html>
