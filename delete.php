@@ -1,12 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>fgggggggggggg</p>
-</body>
-</html>
+<?php
+
+include('db.php');
+include("function.php");
+
+if(isset($_POST["user_id"]))
+{
+ $image = get_image_name($_POST["user_id"]);
+ if($image != '')
+ {
+  unlink("upload/" . $image);
+ }
+ $statement = $connection->prepare(
+  "DELETE FROM users WHERE id = :id"
+ );
+ $result = $statement->execute(
+  array(
+   ':id' => $_POST["user_id"]
+  )
+ );
+ 
+ if(!empty($result))
+ {
+  echo 'Data Deleted';
+ }
+}
+
+
+
+?>
