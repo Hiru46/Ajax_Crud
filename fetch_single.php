@@ -15,14 +15,7 @@ if(isset($_POST["user_id"]))
  {
   $output["first_name"] = $row["first_name"];
   $output["last_name"] = $row["last_name"];
-  if($row["image"] != '')
-  {
-   $output['user_image'] = '<img src="upload/'.$row["image"].'" class="img-thumbnail" width="50" height="35" /><input type="hidden" name="hidden_user_image" value="'.$row["image"].'" />';
-  }
-  else
-  {
-   $output['user_image'] = '<input type="hidden" name="hidden_user_image" value="" />';
-  }
+  
  }
  echo json_encode($output);
 }

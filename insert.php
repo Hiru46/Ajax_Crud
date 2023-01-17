@@ -5,20 +5,16 @@ if(isset($_POST["operation"]))
 {
  if($_POST["operation"] == "Add")
  {
-  $image = '';
-  if($_FILES["user_image"]["name"] != '')
-  {
-   $image = upload_image();
-  }
+  
   $statement = $connection->prepare("
-   INSERT INTO users (first_name, last_name, image) 
-   VALUES (:first_name, :last_name, :image)
+   INSERT INTO users (first_name, last_name, ) 
+   VALUES (:first_name, :last_name, :)
   ");
   $result = $statement->execute(
    array(
     ':first_name' => $_POST["first_name"],
     ':last_name' => $_POST["last_name"],
-    ':image'  => $image
+    
    )
   );
   if(!empty($result))
@@ -28,18 +24,10 @@ if(isset($_POST["operation"]))
  }
  if($_POST["operation"] == "Edit")
  {
-  $image = '';
-  if($_FILES["user_image"]["name"] != '')
-  {
-   $image = upload_image();
-  }
-  else
-  {
-   $image = $_POST["hidden_user_image"];
-  }
+  
   $statement = $connection->prepare(
    "UPDATE users 
-   SET first_name = :first_name, last_name = :last_name, image = :image  
+   SET first_name = :first_name, last_name = :last_name  
    WHERE id = :id
    "
   );
@@ -47,7 +35,7 @@ if(isset($_POST["operation"]))
    array(
     ':first_name' => $_POST["first_name"],
     ':last_name' => $_POST["last_name"],
-    ':image'  => $image,
+   
     ':id'   => $_POST["user_id"]
    )
   );

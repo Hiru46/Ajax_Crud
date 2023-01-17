@@ -28,17 +28,8 @@ $data = array();
 $filtered_rows = $statement->rowCount();
 foreach($result as $row)
 {
- $image = '';
- if($row["image"] != '')
- {
-  $image = '<img src="upload/'.$row["image"].'" class="img-thumbnail" width="50" height="35" />';
- }
- else
- {
-  $image = '';
- }
+ 
  $sub_array = array();
- $sub_array[] = $image;
  $sub_array[] = $row["first_name"];
  $sub_array[] = $row["last_name"];
  $sub_array[] = '<button type="button" name="update" id="'.$row["id"].'" class="btn btn-warning btn-xs update">Update</button>';
